@@ -18,6 +18,9 @@
 4. Storing the results back to memory using `wmma::store_matrix_sync`.
 
 ```cpp
+#include <mma.h>
+using namespace nvcuda;
+
 template<typename Use, int m, int n, int k, typename T, typename Layout=void> class fragment;
 
 void load_matrix_sync(fragment<...> &a, const T* mptr, unsigned ldm);
