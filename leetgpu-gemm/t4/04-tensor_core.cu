@@ -51,7 +51,7 @@ __global__ void matmul_wmma(const half* A, const half* B, half* C, int M, int N,
     for (int k = 0; k < K; k += BLOCK_K) {
         // load tiles
         #pragma unroll
-        for (int i = 0; i < WARP_M; i++) {
+        for (int i = 0; i < (BLOCK_M * BLOCK_K) / NUM_THREADS; i++) {
             // 선형 인덱스 계산: 각 스레드가 담당할 원소
             int idx = threadIdx.x + i * NUM_THREADS;
             
@@ -72,7 +72,7 @@ __global__ void matmul_wmma(const half* A, const half* B, half* C, int M, int N,
         }
 
         #pragma unroll
-        for (int i = 0; i < WARP_N; i++) {
+        for (int i = 0; i < (BLOCK_N * BLOCK_K) / NUM_THREADS; i++) {
             int idx = threadIdx.x + i * NUM_THREADS;
             
             int row = idx / BLOCK_N;  // 0~31
