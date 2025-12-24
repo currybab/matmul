@@ -1,5 +1,7 @@
 ## T4 GPU
 
+[작업 기록](https://currybab.bearblog.dev/blog/leetgpu-gemm-t4/)
+
 - 기존 1등 기록: 0.7371ms
 - [baseline](./01-baseline.cu): 94.83ms (약 129배)
 - [tiling](./02-tiling.cu): 4.35ms (약 5.9배)
