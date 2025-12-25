@@ -1,0 +1,5 @@
+{
+    "[cuda-cpp]": {
+        "editor.formatOnSave": false
+    }
+}
